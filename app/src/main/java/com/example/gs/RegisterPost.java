@@ -38,9 +38,9 @@ public class RegisterPost extends AsyncTask<String,String,String> {
             String Userid = (String)arg0[0];
             String Password = (String)arg0[1];
             String name = (String)arg0[2];
-            String surname = (String)arg0[3];
+            String correo = (String)arg0[3];
             String usernameStudnet = (String)arg0[4];
-            String link = "http://goodstudent.es/goodStudentPHP/RegisterUserPost.php?UserID="+Userid+"&&apellido="+surname+"&&name="+name+"&&password="+Password+"&&nombreStudnet="+usernameStudnet;
+            String link = "http://goodstudent.es/goodStudentPHP/RegisterUserPost.php?UserID="+Userid+"&&email="+correo+"&&name="+name+"&&password="+Password+"&&nombreStudnet="+usernameStudnet;
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();

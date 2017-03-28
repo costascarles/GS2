@@ -7,10 +7,16 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+
+import static com.example.gs.Register.md5;
+
 
 public class MainActivity extends AppCompatActivity {
     private EditText usernameField,passwordField;
     private TextView status;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
     }
     public void login(View view){
         String username = usernameField.getText().toString();
-        String password = passwordField.getText().toString();
+        String password = md5(passwordField.getText().toString());
 
         new SigninActivity(this,status).execute(username,password);
 
@@ -35,4 +41,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent =new Intent(this,Register.class);
         startActivity(intent);
     }
+
 }

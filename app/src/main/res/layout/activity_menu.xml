@@ -29,9 +29,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:text="Calendario"
             android:onClick="calendario"
-            android:background="@drawable/wood"/>
+            android:background="@drawable/ic_calendar"/>
 
     </LinearLayout>
     <LinearLayout
@@ -44,9 +43,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:id="@+id/Correo"
-            android:text="Contacta"
             android:onClick="contacta"
-            android:background="@drawable/wood"/>
+            android:background="@drawable/ic_contacta"/>
         <Button
 
             android:layout_width="match_parent"
