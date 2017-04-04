@@ -42,6 +42,8 @@ public class Notas extends AppCompatActivity implements AdapterView.OnItemClickL
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
     Intent intent=new Intent(this,NotasDetails.class);
+        intent.putExtra("UserId",Userid);
+        intent.putExtra("asignatura", Notasget.data.get(position).getId() );
         startActivity(intent);
 
 
