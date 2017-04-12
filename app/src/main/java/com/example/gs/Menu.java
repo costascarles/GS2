@@ -37,7 +37,7 @@ String Userid;
                 Intent intent1 =new Intent(this,MainActivity.class);
                 startActivity(intent1);
                 return true;
-            case R.id.ayuda:
+            case R.id.CambiarPassword:
 
                 return true;
             case R.id.Ajustes:

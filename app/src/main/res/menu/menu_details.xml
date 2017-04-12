@@ -4,8 +4,8 @@
     <item android:id="@+id/exitLog"
         android:title="Ir al Inicio"
         app:showAsAction="never"/>
-    <item android:id="@+id/ayuda"
-        android:title="Ayuda"
+    <item android:id="@+id/CambiarPassword"
+        android:title="Cambiar Password"
         app:showAsAction="never"/>
     <item android:id="@+id/Ajustes"
         android:title="Ajustes"

@@ -22,10 +22,7 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:25.0.1'
-    compile 'com.google.android.gms:play-services:9.6.0'
-    compile 'pub.devrel:easypermissions:0.2.1'
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile('com.google.api-client:google-api-client-android:1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }
@@ -35,4 +32,9 @@ dependencies {
     android {
         useLibrary 'org.apache.http.legacy'
     }
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'com.roomorama:caldroid:3.0.1'
+    compile 'com.google.android.gms:play-services:9.6.0'
+    compile 'pub.devrel:easypermissions:0.2.1'
+    compile 'com.android.support.constraint:constraint-layout:1.0.1'
 }

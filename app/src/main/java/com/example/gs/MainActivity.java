@@ -3,6 +3,8 @@ package com.example.gs;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -40,6 +42,29 @@ public class MainActivity extends AppCompatActivity {
     public void loginPost(View view){
         Intent intent =new Intent(this,Register.class);
         startActivity(intent);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(android.view.Menu menu){
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_login, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.recupass:
+                Intent intent = new Intent(this,RecuperacionPassword.class);
+                startActivity(intent);
+                return true;
+
+
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
+        }
     }
 
 }

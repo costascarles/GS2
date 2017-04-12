@@ -14,4 +14,9 @@
     <string name="Role">Not assigned</string>
     <string name="method">Login Method</string>
 
+
+    <string name="customize">Customize</string>
+    <string name="show_dialog">Show Dialog</string>
+    <string name="undo">Undo</string>
+
 </resources>
