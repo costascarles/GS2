@@ -10,70 +10,50 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gs.Menu"
     android:orientation="vertical"
-    android:background="@drawable/background">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+    android:background="@color/Fondo"    >
+
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:id="@+id/Notas"
             android:text="Notas"
             android:onClick="notas"
-            android:background="@drawable/wood"/>
+            android:background="#8aa3cc"
+            android:layout_marginLeft="120dp"
+            />
         <Button
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             android:layout_weight="1"
             android:onClick="calendario"
-            android:background="@drawable/ic_calendar"/>
+            android:background="@drawable/ic_calendar"
+            android:layout_marginLeft="120dp"/>
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+
+
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="120dp"
             android:layout_weight="1"
             android:id="@+id/Correo"
             android:onClick="contacta"
             android:background="@drawable/ic_contacta"/>
-        <Button
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/wood"
-            android:text="Noticias" />
 
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_weight="1">
+
         <Button
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_marginLeft="120dp"
             android:layout_weight="1"
-            android:background="@drawable/wood"
+            android:background="#8aa3cc"
             android:text="Progresos" />
 
-        <Button
 
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@drawable/wood"
-            android:text="Ajustes" />
 
-    </LinearLayout>
+
 
 </LinearLayout>

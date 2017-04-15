@@ -33,7 +33,7 @@ public class NotasDetails extends AppCompatActivity {
                 Intent intent1 =new Intent(this,Menu.class);
                 startActivity(intent1);
                 return true;
-            case R.id.ayuda:
+            case R.id.CambiarPassword:
 
                 return true;
             case R.id.Ajustes:

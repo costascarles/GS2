@@ -28,7 +28,8 @@
         <activity android:name=".Contacta" />
         <activity android:name=".Calendario" />
         <activity android:name=".NotasDetails" />
-        <activity android:name=".RecuperacionPassword"></activity>
+        <activity android:name=".RecuperacionPassword" />
+        <activity android:name=".CambiarPassword"></activity>
     </application>
 
 </manifest>

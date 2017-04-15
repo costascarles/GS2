@@ -2,12 +2,12 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/exitLog"
-        android:title="Ir al Inicio"
+        android:title="@string/Menu_salir"
         app:showAsAction="never"/>
     <item android:id="@+id/CambiarPassword"
-        android:title="Cambiar Password"
+        android:title="@string/Menu_contra"
         app:showAsAction="never"/>
     <item android:id="@+id/Ajustes"
-        android:title="Ajustes"
+        android:title="@string/Menu_editarperfil"
         app:showAsAction="never"/>
 </menu>

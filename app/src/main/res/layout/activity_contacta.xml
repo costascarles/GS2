@@ -10,16 +10,17 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.gs.Contacta"
     android:orientation="vertical"
-    android:background="@drawable/background">
+    android:background="@color/Fondo">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_weight="1"
         >
-        <TextView android:text="Destinatario"
+        <TextView android:text="@string/contactdesti"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:fontFamily="sans-serif-smallcaps"
             android:id="@+id/txtForEmail"
             
             android:layout_weight="3">
@@ -38,10 +39,11 @@
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:layout_weight="1">
-        <TextView android:text="Asunto"
+        <TextView android:text="@string/contactAsunt"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/txtForSubject"
+            android:fontFamily="sans-serif-smallcaps"
             android:layout_weight="6">
 
         </TextView>
@@ -57,11 +59,12 @@
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:layout_weight="1">
-            <TextView android:text="Mensaje"
+            <TextView android:text="@string/contactMese"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/txtForBody"
                 android:layout_weight="10"
+                android:fontFamily="sans-serif-smallcaps"
                 android:textAlignment="center"
                 >
 
@@ -83,11 +86,12 @@
         <Button android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/btnSend"
-            android:text="Enviar"
+            android:text="@string/contactEnviar"
+            android:fontFamily="sans-serif-smallcaps"
             android:width="150dip"
             android:onClick="envia"
             android:layout_weight="1"
-            android:background="@drawable/wood">
+            android:background="#8aa3cc">
         </Button>
     </LinearLayout>
 

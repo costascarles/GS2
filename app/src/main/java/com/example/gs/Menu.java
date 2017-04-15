@@ -38,6 +38,9 @@ String Userid;
                 startActivity(intent1);
                 return true;
             case R.id.CambiarPassword:
+                Intent intent = new Intent(this,CambiarPassword.class);
+                intent.putExtra("UserId", Userid);
+                startActivity(intent);
 
                 return true;
             case R.id.Ajustes:
