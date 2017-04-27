@@ -1,14 +1,9 @@
 package com.example.gs;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
 import android.widget.TextView;
 
-import com.example.gs.Adapter.MyListadapter;
 import com.example.gs.Model.ItemModel;
 
 import org.apache.http.HttpResponse;
@@ -17,35 +12,36 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.MalformedURLException;
 import java.net.URI;
-import java.net.URISyntaxException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by carles on 11/02/2017.
+ * Created by Carles on 26/04/2017.
  */
 
-public class Notasget extends AsyncTask<String,String,String> {
+public class ProgresGet extends AsyncTask<String,String,String> {
     private Context context;
-    ListView listanotas;
-    static public List<ItemModel> data;
+    TextView mejornota,avgnota,peornota;
 
-    public Notasget(Context context, ListView listanotas) {
+
+    public ProgresGet(Context context, TextView mejornota,TextView avgnota,TextView peornota) {
         this.context = context;
+        this.mejornota = mejornota;
+        this.avgnota = avgnota;
+        this.peornota= peornota;
 
-         this.listanotas=listanotas;
+
+
     }
     protected void onPreExecute(){
     }
     public String doInBackground(String... arg0) {
         try {
             String Userid = (String)arg0[0];
-            String link = "http://goodstudent.es/goodStudentPHP/GetNotas.php?UserId=" + Userid;
+
+            String link = "http://goodstudent.es/goodStudentPHP/ProgresNotasGet.php?UserId=" + Userid;
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -70,19 +66,28 @@ public class Notasget extends AsyncTask<String,String,String> {
         }
     }
     public void onPostExecute(String result){
-       data=new ArrayList<ItemModel>();
 
-        String[] todas= result.split(";");
+       String[] notas = result.split(";");
+        int[] notascast= new int[notas.length];
+        int BestNota=0;
+        int LowNota=10;
+        float AVGNota=0;
 
-        for(int i=0;i<todas.length;i++){
-            String[] notas=todas[i].split(":");
-           ItemModel model= new ItemModel(notas[0],notas[1].substring(0,1),notas[2]);
-            data.add(model);
+        for(int i=0;i<notas.length;i++) {
+            notascast[i]=Integer.parseInt(notas[i].substring(0,1));
+            if(notascast[i]>=BestNota){
+               BestNota=notascast[i];
+            }
+            if(notascast[i]<=LowNota){
+                LowNota=notascast[i];
+            }
+            AVGNota=AVGNota+notascast[i];
         }
-        MyListadapter adapter = new MyListadapter((Activity) context,data,R.layout.list_item);
-        listanotas.setAdapter(adapter);
+        AVGNota=AVGNota/notas.length;
+        mejornota.setText((String.valueOf( BestNota)));
+        avgnota.setText((String.valueOf( AVGNota)));
+        peornota.setText((String.valueOf(LowNota)));
 
 
     }
-
 }

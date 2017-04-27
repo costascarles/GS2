@@ -75,7 +75,7 @@ public class DetailsNotasGet extends AsyncTask<String,String,String> {
     String[] notaDetail=result.split(";");
         curso.setText(notaDetail[0]);
         actividad.setText(notaDetail[1]);
-        nota.setText(notaDetail[2]);
+        nota.setText(notaDetail[2].substring(0,1));
         comentario.setText(notaDetail[3]);
         profesor.setText(notaDetail[4]);
 

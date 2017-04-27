@@ -33,7 +33,11 @@
     <string name="contactMese">Mensaje</string>
     <string name="resetPasstext">Contraseña antigua:</string>
     <string name="resetPasstextnew">Contraseña nueva:</string>
-    <string name="resetPasstbutton">Cambiar password:</string>
+    <string name="resetPasstbutton">Cambiar contraseña:</string>
+    <string name="bestnote">Mejor nota:</string>
+    <string name="AvgNotes">Nota media :</string>
+    <string name="lownote">Peor Nota:</string>
+    <string name="toastChangepass">Contraseña modificada</string>
 
 
     <string name="customize">Customize</string>

@@ -11,48 +11,86 @@
     tools:context="com.example.gs.Menu"
     android:orientation="vertical"
     android:background="@color/Fondo"    >
-
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
         <Button
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:layout_weight="1"
             android:id="@+id/Notas"
-            android:text="Notas"
+
             android:onClick="notas"
-            android:background="#8aa3cc"
-            android:layout_marginLeft="120dp"
+
+
+            android:background="@drawable/ic_nota"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+
             />
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
         <Button
 
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_weight="1"
+            android:layout_centerHorizontal="true"
             android:onClick="calendario"
-            android:background="@drawable/ic_calendar"
-            android:layout_marginLeft="120dp"/>
+            android:layout_centerVertical="true"
 
+            android:background="@drawable/ic_data"
+            />
+        </RelativeLayout>
+</LinearLayout>
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
 
 
         <Button
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="120dp"
+          android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
             android:layout_weight="1"
             android:id="@+id/Correo"
             android:onClick="contacta"
-            android:background="@drawable/ic_contacta"/>
+            android:background="@drawable/ic_email"/>
+        </RelativeLayout>
 
-
-
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
         <Button
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginLeft="120dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
             android:layout_weight="1"
-            android:background="#8aa3cc"
-            android:text="Progresos" />
+            android:background="@drawable/ic_progres"
 
+            android:onClick="progres"/>
+        </RelativeLayout>
 
+</LinearLayout>
 
 
 

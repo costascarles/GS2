@@ -30,6 +30,11 @@ String Userid;
         Intent intent= new Intent(this,Calendario.class);
         startActivity(intent);
     }
+    public void progres(View view){
+        Intent intent= new Intent(this,Progres.class);
+        intent.putExtra("UserId", Userid);
+        startActivity(intent);
+    }
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {

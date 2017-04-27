@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -78,7 +79,9 @@ String User;
 
     public void onPostExecute(String result){
 
-
+        Toast.makeText(context,
+                "Contraseña modificada", Toast.LENGTH_SHORT)
+                .show();
         Intent intent=new Intent(context,Menu.class);
         intent.putExtra("UserId",User);
         context.startActivity(intent);

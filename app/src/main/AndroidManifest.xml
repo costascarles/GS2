@@ -29,7 +29,8 @@
         <activity android:name=".Calendario" />
         <activity android:name=".NotasDetails" />
         <activity android:name=".RecuperacionPassword" />
-        <activity android:name=".CambiarPassword"></activity>
+        <activity android:name=".CambiarPassword" />
+        <activity android:name=".Progres"></activity>
     </application>
 
 </manifest>
