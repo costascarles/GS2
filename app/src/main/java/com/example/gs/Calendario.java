@@ -10,6 +10,7 @@ import android.widget.CalendarView;
 import com.google.api.services.calendar.model.Events;
 
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import com.google.android.gms.common.ConnectionResult;
@@ -56,8 +57,12 @@ import android.widget.Toast;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
+import java.util.Locale;
 
 import pub.devrel.easypermissions.AfterPermissionGranted;
 import pub.devrel.easypermissions.EasyPermissions;
@@ -66,6 +71,7 @@ public class Calendario extends AppCompatActivity{
     private boolean undo = false;
     private CaldroidFragment caldroidFragment;
     private CaldroidFragment dialogCaldroidFragment;
+    public ArrayList<Date> data = new ArrayList<Date>();
 
     private void setCustomResourceForDates() {
         Calendar cal = Calendar.getInstance();
@@ -93,7 +99,22 @@ public class Calendario extends AppCompatActivity{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
+            String bigInteger[] = getIntent().getStringExtra("dates").split(";");
+        for(int i=0;i<bigInteger.length;i++) {
+            SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ITALIAN);
+            String s=bigInteger[i];
+            Date date = null;
+            try {
+                date = dateParser.parse(s);
+                data.add(i, date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
 
+            //Date d = new Date(date);
+
+
+        }
         final SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy");
 
         // Setup caldroid fragment
@@ -146,14 +167,14 @@ public class Calendario extends AppCompatActivity{
 
             @Override
             public void onSelectDate(Date date, View view) {
+
                 Toast.makeText(getApplicationContext(), formatter.format(date),
                         Toast.LENGTH_SHORT).show();
 
-             Calendar   cal = Calendar.getInstance();
-                cal.add(Calendar.DATE, date.getDay());
-                Date fromDate = cal.getTime();
-                caldroidFragment.setSelectedDates(fromDate, date);
-                caldroidFragment.refreshView();
+
+
+
+
             }
 
             @Override
@@ -184,6 +205,15 @@ public class Calendario extends AppCompatActivity{
                     Toast.makeText(getApplicationContext(),
                             "Caldroid view is created", Toast.LENGTH_SHORT)
                             .show();
+
+                    for(int i=0; i<data.size();i++){
+                        Date date=data.get(i);
+                        caldroidFragment.setTextColorForDate(R.color.blue,date);
+
+
+                        caldroidFragment.refreshView();
+                    }
+
                 }
             }
 
@@ -194,66 +224,11 @@ public class Calendario extends AppCompatActivity{
 
         final TextView textView = (TextView) findViewById(R.id.textview);
 
-        final Button customizeButton = (Button) findViewById(R.id.customize_button);
-
-        // Customize the calendar
-        customizeButton.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                if (undo) {
-                    customizeButton.setText(getString(R.string.customize));
-                    textView.setText("");
-
-                    // Reset calendar
-                    caldroidFragment.clearDisableDates();
-                    caldroidFragment.clearSelectedDates();
-                    caldroidFragment.setMinDate(null);
-                    caldroidFragment.setMaxDate(null);
-                    caldroidFragment.setShowNavigationArrows(true);
-                    caldroidFragment.setEnableSwipe(true);
-                    caldroidFragment.refreshView();
-                    undo = false;
-                    return;
-                }
-
-                // Else
-                undo = true;
-                customizeButton.setText(getString(R.string.undo));
-                Calendar cal = Calendar.getInstance();
-
-                // Min date is last 7 days
-                cal.add(Calendar.DATE, -7);
-                Date minDate = cal.getTime();
-
-                // Max date is next 7 days
-                cal = Calendar.getInstance();
-                cal.add(Calendar.DATE, 18);
-                Date maxDate = cal.getTime();
-
-                // Set selected dates
-                // From Date
-                cal = Calendar.getInstance();
-                cal.add(Calendar.DATE, 2);
-                Date fromDate = cal.getTime();
-
-                // To Date
-                cal = Calendar.getInstance();
-                cal.add(Calendar.DATE, 3);
-                Date toDate = cal.getTime();
-
-                // Set disabled dates
-                ArrayList<Date> disabledDates = new ArrayList<Date>();
-                for (int i = 5; i < 8; i++) {
-                    cal = Calendar.getInstance();
-                    cal.add(Calendar.DATE, i);
-                    disabledDates.add(cal.getTime());
-                }
-
-                // Customize
+       // final Button customizeButton = (Button) findViewById(R.id.customize_button);
+/*
                 caldroidFragment.setMinDate(minDate);
                 caldroidFragment.setMaxDate(maxDate);
-                caldroidFragment.setDisableDates(disabledDates);
+               // caldroidFragment.setDisableDates(disabledDates);
                 caldroidFragment.setSelectedDates(fromDate, toDate);
                 caldroidFragment.setShowNavigationArrows(false);
                 caldroidFragment.setEnableSwipe(false);
@@ -271,14 +246,15 @@ public class Calendario extends AppCompatActivity{
                 text += "Select From Date: " + formatter.format(fromDate)
                         + "\n";
                 text += "Select To Date: " + formatter.format(toDate) + "\n";
-                for (Date date : disabledDates) {
+                /*for (Date date : disabledDates) {
                     text += "Disabled Date: " + formatter.format(date) + "\n";
-                }
+                }*/
 
+/*
                 textView.setText(text);
             }
-        });
-
+        });*/
+/*
         Button showDialogButton = (Button) findViewById(R.id.show_dialog_button);
 
         final Bundle state = savedInstanceState;
@@ -312,6 +288,7 @@ public class Calendario extends AppCompatActivity{
                         dialogTag);
             }
         });
+        */
     }
 
     /**

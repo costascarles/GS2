@@ -23,6 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
+
         android:hint="@string/Regispass"
         android:fontFamily="sans-serif-smallcaps"
 
@@ -41,7 +42,8 @@
         android:layout_weight="1"
         android:hint="@string/Regisemail"
         android:fontFamily="sans-serif-smallcaps"
-        android:id="@+id/surname" />
+        android:id="@+id/surname"
+        android:inputType="textEmailAddress"/>
     <EditText
         android:layout_width="match_parent"
         android:layout_height="match_parent"

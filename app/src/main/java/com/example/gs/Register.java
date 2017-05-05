@@ -1,10 +1,12 @@
 package com.example.gs;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;
@@ -26,8 +28,19 @@ public class Register extends AppCompatActivity {
 
     }
     public void regist(View view){
-        passHashed=md5(password.getText().toString());
-        new RegisterPost(this).execute(Userid.getText().toString(),passHashed,name.getText().toString(),surname.getText().toString(),nameSudent.getText().toString());
+        if(password.length()<8 ){
+            Context context = getApplicationContext();
+            CharSequence text = "Contraseña muy corta";
+            int duration = Toast.LENGTH_SHORT;
+
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+
+
+        }else {
+            passHashed = md5(password.getText().toString());
+            new RegisterPost(this).execute(Userid.getText().toString(), passHashed, name.getText().toString(), surname.getText().toString(), nameSudent.getText().toString());
+        }
     }
     public static String md5(String encTarget){
         MessageDigest mdEnc = null;

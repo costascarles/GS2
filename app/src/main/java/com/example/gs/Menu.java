@@ -27,8 +27,10 @@ String Userid;
         startActivity(intent);
     }
     public void calendario(View view){
+        new GetDates(this).execute(Userid);
+        /*
         Intent intent= new Intent(this,Calendario.class);
-        startActivity(intent);
+        startActivity(intent);*/
     }
     public void progres(View view){
         Intent intent= new Intent(this,Progres.class);

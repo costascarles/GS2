@@ -38,6 +38,7 @@
     <string name="AvgNotes">Nota media :</string>
     <string name="lownote">Peor Nota:</string>
     <string name="toastChangepass">Contraseña modificada</string>
+    <string name="ivalidpass">Contraseña muy corta.</string>
 
 
     <string name="customize">Customize</string>

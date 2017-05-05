@@ -22,6 +22,7 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:fontFamily="sans-serif-smallcaps"
+            android:textColor="@color/caldroid_black"
             android:text="@string/detailcurso"/>
 <TextView
     android:layout_width="match_parent"
@@ -29,6 +30,7 @@
     android:fontFamily="sans-serif-smallcaps"
     android:id="@+id/curso_details"
     android:layout_weight="1"
+    android:textColor="@color/caldroid_black"
     android:text="curso"/>
     </LinearLayout>
     <LinearLayout
@@ -40,6 +42,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
+            android:textColor="@color/caldroid_black"
             android:fontFamily="sans-serif-smallcaps"
             android:text="@string/detailactiv"/>
     <TextView
@@ -48,6 +51,7 @@
         android:id="@+id/comentario_details"
         android:fontFamily="sans-serif-smallcaps"
         android:layout_weight="1"
+        android:textColor="@color/caldroid_black"
         android:text="Comentario"/>
     </LinearLayout>
     <LinearLayout
@@ -59,6 +63,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
+            android:textColor="@color/caldroid_black"
             android:fontFamily="sans-serif-smallcaps"
             android:text="@string/detailnota"/>
     <TextView
@@ -67,6 +72,7 @@
         android:id="@+id/activity_details"
         android:layout_weight="1"
         android:fontFamily="sans-serif-smallcaps"
+        android:textColor="@color/caldroid_black"
         android:text="actividad"/>
     </LinearLayout>
     <LinearLayout
@@ -79,6 +85,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="3"
+            android:textColor="@color/caldroid_black"
             android:fontFamily="sans-serif-smallcaps"
             android:text="@string/detailprof"/>
     <TextView
@@ -87,6 +94,7 @@
         android:id="@+id/professor_details"
         android:fontFamily="sans-serif-smallcaps"
         android:layout_weight="1"
+        android:textColor="@color/caldroid_black"
         android:text="teacher"/>
     </LinearLayout>
 
@@ -100,8 +108,10 @@
             android:layout_height="match_parent"
             android:layout_weight="3"
             android:fontFamily="sans-serif-smallcaps"
+            android:textColor="@color/caldroid_black"
             android:text="@string/detailcoment"/>
     <TextView
+        android:textColor="@color/caldroid_black"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/nota_details"
