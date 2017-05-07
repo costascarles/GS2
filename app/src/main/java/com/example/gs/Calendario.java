@@ -72,7 +72,7 @@ public class Calendario extends AppCompatActivity{
     private CaldroidFragment caldroidFragment;
     private CaldroidFragment dialogCaldroidFragment;
     public ArrayList<Date> data = new ArrayList<Date>();
-
+String UserId;
     private void setCustomResourceForDates() {
         Calendar cal = Calendar.getInstance();
 
@@ -88,10 +88,10 @@ public class Calendario extends AppCompatActivity{
         if (caldroidFragment != null) {
             ColorDrawable blue = new ColorDrawable(getResources().getColor(R.color.blue));
             ColorDrawable green = new ColorDrawable(Color.GREEN);
-            caldroidFragment.setBackgroundDrawableForDate(blue, blueDate);
-            caldroidFragment.setBackgroundDrawableForDate(green, greenDate);
-            caldroidFragment.setTextColorForDate(R.color.white, blueDate);
-            caldroidFragment.setTextColorForDate(R.color.white, greenDate);
+           // caldroidFragment.setBackgroundDrawableForDate(blue, blueDate);
+           // caldroidFragment.setBackgroundDrawableForDate(blue, greenDate);
+            //caldroidFragment.setTextColorForDate(R.color.white, blueDate);
+            //caldroidFragment.setTextColorForDate(R.color.white, greenDate);
         }
     }
 
@@ -100,6 +100,7 @@ public class Calendario extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendario);
             String bigInteger[] = getIntent().getStringExtra("dates").split(";");
+        UserId = getIntent().getStringExtra("UserId");
         for(int i=0;i<bigInteger.length;i++) {
             SimpleDateFormat dateParser = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ITALIAN);
             String s=bigInteger[i];
@@ -170,7 +171,12 @@ public class Calendario extends AppCompatActivity{
 
                 Toast.makeText(getApplicationContext(), formatter.format(date),
                         Toast.LENGTH_SHORT).show();
-
+                    Intent intent = new Intent(caldroidFragment.getContext(),EventosDetails.class);
+                intent.putExtra("Userid",UserId);
+                SimpleDateFormat date_format = new SimpleDateFormat("yyyy-MM-dd");
+                String dates = date_format.format(date);
+                intent.putExtra("date",dates);
+                startActivity(intent);
 
 
 

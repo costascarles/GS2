@@ -30,7 +30,8 @@
         <activity android:name=".NotasDetails" />
         <activity android:name=".RecuperacionPassword" />
         <activity android:name=".CambiarPassword" />
-        <activity android:name=".Progres"></activity>
+        <activity android:name=".Progres" />
+        <activity android:name=".EventosDetails"></activity>
     </application>
 
 </manifest>

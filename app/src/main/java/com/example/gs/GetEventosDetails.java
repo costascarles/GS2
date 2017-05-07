@@ -4,11 +4,13 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.gs.Adapter.AdapterCalendario;
 import com.example.gs.Adapter.MyListadapter;
 import com.example.gs.Model.ItemModel;
+import com.example.gs.Model.ItemModelCalendario;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -20,30 +22,31 @@ import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Carles on 03/05/2017.
+ * Created by Carles on 07/05/2017.
  */
 
-public class GetDates extends AsyncTask<String,String,String> {
-    private Context context;
-String userID;
-    static public List<Date> data;
+public class GetEventosDetails extends AsyncTask<String,String,String> {
 
-    public GetDates(Context context) {
+    private Context context;
+    ListView listaevents;
+    static public List<ItemModelCalendario> data;
+String userid;
+    public GetEventosDetails(Context context, ListView listaevents) {
         this.context = context;
 
-
+        this.listaevents=listaevents;
     }
     protected void onPreExecute(){
     }
     public String doInBackground(String... arg0) {
         try {
             String Userid = (String)arg0[0];
-            userID=Userid;
-            String link = "http://goodstudent.es/goodStudentPHP/getDates.php?UserId=" + Userid;
+            userid=Userid;
+            String date = (String)arg0[1];
+            String link = "http://goodstudent.es/goodStudentPHP/getDatesDetails.php?UserId=" + Userid+"&&date="+date;
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -68,18 +71,28 @@ String userID;
         }
     }
     public void onPostExecute(String result){
+        data=new ArrayList<ItemModelCalendario>();
 
-String bigInteger[] = result.split(";");
-        /**
-        for(int i=0;i<bigInteger.length;i++){
-            long date = Long.parseLong(bigInteger[i]);
-            Date d= new Date(date);
-            data.add(i,d);
-        }**/
-        Intent intent=new Intent(context,Calendario.class);
-        intent.putExtra("dates",result);
-        intent.putExtra("UserId",userID);
-        context.startActivity(intent);
+        String[] todas= result.split(";");
+if(result!="") {
+    for (int i = 0; i < todas.length; i++) {
+        String[] events = todas[i].split("/");
+        ItemModelCalendario model = new ItemModelCalendario(events[2], events[1], events[0]);
+        data.add(model);
+    }
+    AdapterCalendario adapter = new AdapterCalendario((Activity) context, data, R.layout.list_item_calendar);
+    listaevents.setAdapter(adapter);
+}else{
+
+    CharSequence text = "No hay eventos programados";
+    int duration = Toast.LENGTH_SHORT;
+
+    Toast toast = Toast.makeText(context, text, duration);
+    toast.show();
+    new GetDates(context).execute(userid);
+
+}
+
 
     }
 }
