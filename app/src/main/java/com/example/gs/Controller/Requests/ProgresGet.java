@@ -1,11 +1,8 @@
-package com.example.gs;
+package com.example.gs.Controller.Requests;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
+import android.widget.TextView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -18,16 +15,20 @@ import java.net.URI;
 import java.net.URL;
 
 /**
- * Created by carles on 12/02/2017.
+ * Created by Carles on 26/04/2017.
  */
 
-public class RegisterPost extends AsyncTask<String,String,String> {
+public class ProgresGet extends AsyncTask<String,String,String> {
     private Context context;
+    TextView mejornota,avgnota,peornota;
 
 
-
-    public RegisterPost(Context context) {
+    public ProgresGet(Context context, TextView mejornota,TextView avgnota,TextView peornota) {
         this.context = context;
+        this.mejornota = mejornota;
+        this.avgnota = avgnota;
+        this.peornota= peornota;
+
 
 
     }
@@ -36,11 +37,8 @@ public class RegisterPost extends AsyncTask<String,String,String> {
     public String doInBackground(String... arg0) {
         try {
             String Userid = (String)arg0[0];
-            String Password = (String)arg0[1];
-            String name = (String)arg0[2];
-            String correo = (String)arg0[3];
-            String usernameStudnet = (String)arg0[4];
-            String link = "http://goodstudent.es/goodStudentPHP/RegisterUserPost.php?UserID="+Userid+"&&email="+correo+"&&name="+name+"&&password="+Password+"&&nombreStudnet="+usernameStudnet;
+
+            String link = "http://goodstudent.es/goodStudentPHP/ProgresNotasGet.php?UserId=" + Userid;
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -65,15 +63,27 @@ public class RegisterPost extends AsyncTask<String,String,String> {
         }
     }
     public void onPostExecute(String result){
-if(result.equals("1")){
-    System.out.println("Register");
-    Intent intent = new Intent(context, MainActivity.class);
 
-    context.startActivity(intent);
-    ((Activity) context).finish();
-}else{
-    System.out.println("error");
-}
+       String[] notas = result.split(";");
+        int[] notascast= new int[notas.length];
+        int BestNota=0;
+        int LowNota=10;
+        float AVGNota=0;
+
+        for(int i=0;i<notas.length;i++) {
+            notascast[i]=Integer.parseInt(notas[i].substring(0,1));
+            if(notascast[i]>=BestNota){
+               BestNota=notascast[i];
+            }
+            if(notascast[i]<=LowNota){
+                LowNota=notascast[i];
+            }
+            AVGNota=AVGNota+notascast[i];
+        }
+        AVGNota=AVGNota/notas.length;
+        mejornota.setText((String.valueOf( BestNota)));
+        avgnota.setText((String.valueOf( AVGNota)));
+        peornota.setText((String.valueOf(LowNota)));
 
 
     }

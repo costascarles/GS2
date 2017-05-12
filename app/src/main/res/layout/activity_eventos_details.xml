@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/activity_events"
-    tools:context="com.example.gs.EventosDetails">
+    tools:context="com.example.gs.Controller.EventosDetails">
     <ListView
         android:layout_width="match_parent"
         android:layout_height="match_parent"

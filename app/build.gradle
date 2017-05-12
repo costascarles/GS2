@@ -29,6 +29,7 @@ dependencies {
     compile('com.google.apis:google-api-services-calendar:v3-rev233-1.22.0') {
         exclude group: 'org.apache.httpcomponents'
     }
+
     android {
         useLibrary 'org.apache.http.legacy'
     }

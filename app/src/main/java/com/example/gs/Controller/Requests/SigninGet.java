@@ -1,10 +1,12 @@
-package com.example.gs;
+package com.example.gs.Controller.Requests;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.widget.TextView;
+
+import com.example.gs.Controller.Menu;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -13,23 +15,20 @@ import org.apache.http.impl.client.DefaultHttpClient;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.net.URI;
 import java.net.URL;
-import java.net.URLConnection;
-import java.net.URLEncoder;
 
 /**
  * Created by Alumne on 03/02/2017.
  */
-public class SigninActivity  extends AsyncTask<String,String,String> {
+public class SigninGet extends AsyncTask<String,String,String> {
     private TextView statusField;
     private Context context;
 
     private String name;
 
     //flag 0 means get and 1 means post.(By default it is get.)
-    public SigninActivity(Context context,TextView statusField) {
+    public SigninGet(Context context, TextView statusField) {
         this.context = context;
         this.statusField = statusField;
 

@@ -1,4 +1,4 @@
-package com.example.gs.Adapter;
+package com.example.gs.Controller.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
@@ -9,22 +9,21 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.gs.Model.ItemModel;
-import com.example.gs.Model.ItemModelCalendario;
 import com.example.gs.R;
 
 import java.util.List;
 
 /**
- * Created by Carles on 07/05/2017.
+ * Created by Alumne on 06/03/2017.
  */
 
-public class AdapterCalendario extends BaseAdapter {
+public class MyListadapter extends BaseAdapter {
     private Activity activity;
-    private List<ItemModelCalendario> data;
+    private List<ItemModel> data;
     private LayoutInflater inflater;
     private int item_layout;
 
-    public AdapterCalendario (Activity activity, List<ItemModelCalendario> data, int item_layout ) {
+    public MyListadapter(Activity activity, List<ItemModel> data, int item_layout ) {
         this.item_layout = item_layout;
         this.inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         this.activity = activity;
@@ -56,15 +55,14 @@ public class AdapterCalendario extends BaseAdapter {
         }
         //Get Views from custom layout
 
-        TextView itemCurs=(TextView) convertView.findViewById(R.id.itemcurs);
-        TextView itemActivity=(TextView) convertView.findViewById(R.id.itemactivity);
-        TextView itemdate=(TextView) convertView.findViewById(R.id.itemdate);
+        TextView itemTitle=(TextView) convertView.findViewById(R.id.itemTitel);
+        TextView itemDificultad=(TextView) convertView.findViewById(R.id.itemNota);
 
         //Set values for item at position
 
-        itemCurs.setText(data.get(position).getCurs());
-        itemActivity.setText(data.get(position).getActivity());
-        itemdate.setText(data.get(position).getDate());
+        itemTitle.setText(data.get(position).getTitle());
+        itemDificultad.setText(data.get(position).getNota());
+
         return convertView;
     }
 }

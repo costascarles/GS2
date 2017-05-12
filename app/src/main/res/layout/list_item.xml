@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:fontFamily="sans-serif-smallcaps"
-
+        android:textColor="@color/caldroid_black"
         android:id="@+id/itemTitel"
 
         android:layout_centerHorizontal="true"
@@ -17,6 +17,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="20dp"
+        android:textColor="@color/caldroid_black"
         android:fontFamily="sans-serif-smallcaps"
         android:id="@+id/itemNota"
         android:layout_below="@+id/itemTitel"

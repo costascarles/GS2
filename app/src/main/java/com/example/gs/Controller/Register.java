@@ -1,12 +1,14 @@
-package com.example.gs;
+package com.example.gs.Controller;
 
 import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
+
+import com.example.gs.R;
+import com.example.gs.Controller.Requests.RegisterPost;
 
 import java.math.BigInteger;
 import java.security.MessageDigest;

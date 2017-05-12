@@ -5,12 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/Fondo"
-    tools:context="com.example.gs.Progres">
+    tools:context="com.example.gs.Controller.Progres">
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:id="@+id/textProgresBestNote"
         android:text="@string/bestnote"
+        android:textColor="@color/caldroid_black"
         android:layout_marginTop="20dp"
         android:fontFamily="sans-serif-smallcaps"
         android:textSize="20dp"
@@ -20,6 +21,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:textSize="20dp"
+        android:textColor="@color/caldroid_black"
         android:id="@+id/BestNoteProgres"
         android:textAlignment="center"
         android:layout_marginTop="20dp"
@@ -29,6 +31,7 @@
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:textSize="20dp"
+        android:textColor="@color/caldroid_black"
         android:id="@+id/textProgresAVGNote"
         android:layout_below="@id/BestNoteProgres"
         android:textAlignment="center"
@@ -42,12 +45,14 @@
         android:textAlignment="center"
         android:textSize="20dp"
         android:layout_marginTop="20dp"
+        android:textColor="@color/caldroid_black"
         android:fontFamily="sans-serif-smallcaps"
         android:id="@+id/AVGNoteProgres"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="20dp"
         android:textSize="20dp"
+        android:textColor="@color/caldroid_black"
         android:id="@+id/textProgresLowNote"
         android:layout_below="@id/AVGNoteProgres"
         android:textAlignment="center"
@@ -60,6 +65,7 @@
         android:layout_below="@id/textProgresLowNote"
         android:textAlignment="center"
         android:layout_marginTop="20dp"
+        android:textColor="@color/caldroid_black"
         android:textSize="20dp"
         android:fontFamily="sans-serif-smallcaps"
         android:id="@+id/LowNoteProgres"/>

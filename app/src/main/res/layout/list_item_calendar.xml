@@ -8,7 +8,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:fontFamily="sans-serif-smallcaps"
-
+        android:textColor="@color/caldroid_black"
         android:id="@+id/itemcurs"
 
         android:layout_centerVertical="true"
@@ -18,7 +18,7 @@
         android:layout_height="wrap_content"
         android:textSize="20dp"
         android:fontFamily="sans-serif-smallcaps"
-
+        android:textColor="@color/caldroid_black"
         android:id="@+id/itemactivity"
 
         android:layout_centerVertical="true"
@@ -30,6 +30,7 @@
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:fontFamily="sans-serif-smallcaps"
+       android:textColor="@color/caldroid_black"
        android:textSize="20dp"
        android:layout_below="@id/itemcurs"
        android:layout_marginTop="20dp"

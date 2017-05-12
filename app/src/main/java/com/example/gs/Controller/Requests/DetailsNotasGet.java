@@ -1,13 +1,9 @@
-package com.example.gs;
+package com.example.gs.Controller.Requests;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.provider.ContactsContract;
-import android.widget.ListView;
+import android.widget.TextView;
 
-import com.example.gs.Adapter.MyListadapter;
 import com.example.gs.Model.ItemModel;
 
 import org.apache.http.HttpResponse;
@@ -19,21 +15,24 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 /**
- * Created by Carles on 03/05/2017.
+ * Created by Carles on 04/04/2017.
  */
 
-public class GetDates extends AsyncTask<String,String,String> {
+public class DetailsNotasGet extends AsyncTask<String,String,String> {
     private Context context;
-String userID;
-    static public List<Date> data;
+    TextView curso,profesor,actividad,nota,comentario;
+    private List<ItemModel> data;
 
-    public GetDates(Context context) {
+    public DetailsNotasGet(Context context, TextView Curso,TextView Profesor,TextView Nota,TextView Comentario,TextView Actividad ) {
         this.context = context;
+        this.curso = Curso;
+        this.actividad = Actividad;
+        this.profesor= Profesor;
+        this.nota= Nota;
+        this.comentario= Comentario;
 
 
     }
@@ -42,8 +41,8 @@ String userID;
     public String doInBackground(String... arg0) {
         try {
             String Userid = (String)arg0[0];
-            userID=Userid;
-            String link = "http://goodstudent.es/goodStudentPHP/getDates.php?UserId=" + Userid;
+            String activitat = (String)arg0[1];
+            String link = "http://goodstudent.es/goodStudentPHP/NotasDetailGet.php?UserId=" + Userid+"&&AsignId="+activitat;
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -69,17 +68,15 @@ String userID;
     }
     public void onPostExecute(String result){
 
-String bigInteger[] = result.split(";");
-        /**
-        for(int i=0;i<bigInteger.length;i++){
-            long date = Long.parseLong(bigInteger[i]);
-            Date d= new Date(date);
-            data.add(i,d);
-        }**/
-        Intent intent=new Intent(context,Calendario.class);
-        intent.putExtra("dates",result);
-        intent.putExtra("UserId",userID);
-        context.startActivity(intent);
+    String[] notaDetail=result.split(";");
+        curso.setText(notaDetail[0]);
+        actividad.setText(notaDetail[1]);
+        nota.setText(notaDetail[2].substring(0,1));
+        comentario.setText(notaDetail[3]);
+        profesor.setText(notaDetail[4]);
 
     }
+
 }
+
+

@@ -1,10 +1,8 @@
-package com.example.gs;
+package com.example.gs.Controller.Requests;
 
 import android.content.Context;
 import android.os.AsyncTask;
 import android.widget.TextView;
-
-import com.example.gs.Model.ItemModel;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -15,33 +13,40 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
-import java.util.List;
 
 /**
- * Created by Carles on 26/04/2017.
+ * Created by Carles on 12/04/2017.
  */
 
-public class ProgresGet extends AsyncTask<String,String,String> {
+public class NewPasswordGet extends AsyncTask<String,String,String> {
+    private TextView statusField;
     private Context context;
-    TextView mejornota,avgnota,peornota;
 
+    private String email;
 
-    public ProgresGet(Context context, TextView mejornota,TextView avgnota,TextView peornota) {
+    //flag 0 means get and 1 means post.(By default it is get.)
+    public NewPasswordGet(Context context,TextView statusField) {
         this.context = context;
-        this.mejornota = mejornota;
-        this.avgnota = avgnota;
-        this.peornota= peornota;
-
+        this.statusField = statusField;
 
 
     }
+
+
+
     protected void onPreExecute(){
     }
-    public String doInBackground(String... arg0) {
-        try {
-            String Userid = (String)arg0[0];
 
-            String link = "http://goodstudent.es/goodStudentPHP/ProgresNotasGet.php?UserId=" + Userid;
+
+    public String doInBackground(String... arg0) {
+
+
+        try{
+            String mail = (String)arg0[0];
+            email=mail;
+
+            String link = "http://goodstudent.es/goodStudentPHP/mail.php?correo="+email;
+
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -51,11 +56,10 @@ public class ProgresGet extends AsyncTask<String,String,String> {
                     InputStreamReader(response.getEntity().getContent()));
 
             StringBuffer sb = new StringBuffer("");
-            String line = "";
+            String line="";
 
             while ((line = in.readLine()) != null) {
                 sb.append(line);
-
                 break;
             }
 
@@ -64,29 +68,19 @@ public class ProgresGet extends AsyncTask<String,String,String> {
         } catch(Exception e){
             return new String("Exception: " + e.getMessage());
         }
+
     }
+
+
+
     public void onPostExecute(String result){
+ String a=result;
+if(result.equals("1")){
+    statusField.setText("Tu correo ha sido enviado comprueba no deseados si no ha llegado.");
+}else {
+    statusField.setText("Dirección de correo erronea:"+result);
+}
 
-       String[] notas = result.split(";");
-        int[] notascast= new int[notas.length];
-        int BestNota=0;
-        int LowNota=10;
-        float AVGNota=0;
-
-        for(int i=0;i<notas.length;i++) {
-            notascast[i]=Integer.parseInt(notas[i].substring(0,1));
-            if(notascast[i]>=BestNota){
-               BestNota=notascast[i];
-            }
-            if(notascast[i]<=LowNota){
-                LowNota=notascast[i];
-            }
-            AVGNota=AVGNota+notascast[i];
-        }
-        AVGNota=AVGNota/notas.length;
-        mejornota.setText((String.valueOf( BestNota)));
-        avgnota.setText((String.valueOf( AVGNota)));
-        peornota.setText((String.valueOf(LowNota)));
 
 
     }

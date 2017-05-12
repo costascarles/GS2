@@ -1,13 +1,11 @@
-package com.example.gs;
+package com.example.gs.Controller.Requests;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.ListView;
-import android.widget.TextView;
 
-import com.example.gs.Adapter.MyListadapter;
-import com.example.gs.Model.ItemModel;
+import com.example.gs.Controller.Login;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -18,25 +16,18 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 
 /**
- * Created by Carles on 04/04/2017.
+ * Created by carles on 12/02/2017.
  */
 
-public class DetailsNotasGet extends AsyncTask<String,String,String> {
+public class RegisterPost extends AsyncTask<String,String,String> {
     private Context context;
-    TextView curso,profesor,actividad,nota,comentario;
-    private List<ItemModel> data;
 
-    public DetailsNotasGet(Context context, TextView Curso,TextView Profesor,TextView Nota,TextView Comentario,TextView Actividad ) {
+
+
+    public RegisterPost(Context context) {
         this.context = context;
-        this.curso = Curso;
-        this.actividad = Actividad;
-        this.profesor= Profesor;
-        this.nota= Nota;
-        this.comentario= Comentario;
 
 
     }
@@ -45,8 +36,11 @@ public class DetailsNotasGet extends AsyncTask<String,String,String> {
     public String doInBackground(String... arg0) {
         try {
             String Userid = (String)arg0[0];
-            String activitat = (String)arg0[1];
-            String link = "http://goodstudent.es/goodStudentPHP/NotasDetailGet.php?UserId=" + Userid+"&&AsignId="+activitat;
+            String Password = (String)arg0[1];
+            String name = (String)arg0[2];
+            String correo = (String)arg0[3];
+            String usernameStudnet = (String)arg0[4];
+            String link = "http://goodstudent.es/goodStudentPHP/RegisterUserPost.php?UserID="+Userid+"&&email="+correo+"&&name="+name+"&&password="+Password+"&&nombreStudnet="+usernameStudnet;
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -71,16 +65,16 @@ public class DetailsNotasGet extends AsyncTask<String,String,String> {
         }
     }
     public void onPostExecute(String result){
+if(result.equals("1")){
+    System.out.println("Register");
+    Intent intent = new Intent(context, Login.class);
 
-    String[] notaDetail=result.split(";");
-        curso.setText(notaDetail[0]);
-        actividad.setText(notaDetail[1]);
-        nota.setText(notaDetail[2].substring(0,1));
-        comentario.setText(notaDetail[3]);
-        profesor.setText(notaDetail[4]);
-
-    }
-
+    context.startActivity(intent);
+    ((Activity) context).finish();
+}else{
+    System.out.println("error");
 }
 
 
+    }
+}

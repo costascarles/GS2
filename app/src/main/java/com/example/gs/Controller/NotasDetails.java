@@ -1,20 +1,29 @@
-package com.example.gs;
+package com.example.gs.Controller;
 
-import android.content.Context;
 import android.content.Intent;
+import android.support.v4.app.NavUtils;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.*;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import com.example.gs.R;
+import com.example.gs.Controller.Requests.DetailsNotasGet;
 
 public class NotasDetails extends AppCompatActivity {
     TextView curso,profesor,actividad,nota,comentario;
     String Userid,asign;
+    ActionBar actionBar ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notas_details);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+      //  getSupportActionBar().setHomeButtonEnabled(true);
+
         Userid= getIntent().getStringExtra("UserId");
         asign= getIntent().getStringExtra("asignatura");
 
@@ -29,18 +38,10 @@ public class NotasDetails extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.exitLog:
-                Intent intent1 =new Intent(this,Menu.class);
-                startActivity(intent1);
+            case android.R.id.home:
+                finish();
+                //NavUtils.navigateUpFromSameTask(this);
                 return true;
-            case R.id.CambiarPassword:
-
-                return true;
-            case R.id.Ajustes:
-
-                return true;
-
-
 
             default:
                 // If we got here, the user's action was not recognized.
@@ -49,10 +50,5 @@ public class NotasDetails extends AppCompatActivity {
 
         }
     }
-    @Override
-    public boolean onCreateOptionsMenu(android.view.Menu menu){
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_details, menu);
-        return true;
-    }
+
 }

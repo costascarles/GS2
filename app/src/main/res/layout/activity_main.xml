@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.gs.MainActivity"
+    tools:context="com.example.gs.Controller.Login"
     android:background="@color/Fondo"
 
     android:orientation="vertical">

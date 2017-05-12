@@ -1,11 +1,8 @@
-package com.example.gs;
+package com.example.gs.Controller.Requests;
 
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.provider.CalendarContract;
 import android.widget.ArrayAdapter;
-import android.widget.CalendarView;
 import android.widget.Spinner;
 
 import org.apache.http.HttpResponse;
@@ -17,28 +14,27 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URI;
 import java.net.URL;
-import java.util.Calendar;
 
 /**
  * Created by carles on 13/02/2017.
  */
 
-public class EventsGet extends AsyncTask<String,String,String> {
+public class CorreosGet extends AsyncTask<String,String,String> {
     private Context context;
-    CalendarView calendar;
+    Spinner correo;
 
 
-    public EventsGet(Context context,CalendarView cal) {
+    public CorreosGet(Context context, Spinner listanotas) {
         this.context = context;
-        this.calendar=cal;
 
+        this.correo=listanotas;
     }
     protected void onPreExecute(){
     }
     public String doInBackground(String... arg0) {
         try {
 
-            String link = "http://goodstudent.es/goodStudentPHP/EventsGet.php";
+            String link = "http://goodstudent.es/goodStudentPHP/CorreosGet.php";
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -63,15 +59,11 @@ public class EventsGet extends AsyncTask<String,String,String> {
         }
     }
     public void onPostExecute(String result){
-        String[] events= result.split(";");
-        for(int i=0;i<events.length;i++) {
-            String[] event=events[i].split(":");
+        String[] correos= result.split(";");
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, correos);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        correo.setAdapter(adapter);
 
-
-
-
-
-        }
 
     }
 }

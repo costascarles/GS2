@@ -1,10 +1,11 @@
-package com.example.gs;
+package com.example.gs.Controller.Requests;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.gs.Controller.Menu;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -17,25 +18,39 @@ import java.net.URI;
 import java.net.URL;
 
 /**
- * Created by carles on 13/02/2017.
+ * Created by Carles on 15/04/2017.
  */
 
-public class CorreosGet extends AsyncTask<String,String,String> {
+public class CambiaPasswordGet extends AsyncTask<String,String,String> {
+
     private Context context;
-    Spinner correo;
+String User;
 
 
-    public CorreosGet(Context context, Spinner listanotas) {
+    //flag 0 means get and 1 means post.(By default it is get.)
+    public CambiaPasswordGet(Context context) {
         this.context = context;
 
-        this.correo=listanotas;
+
+
     }
+
+
+
     protected void onPreExecute(){
     }
-    public String doInBackground(String... arg0) {
-        try {
 
-            String link = "http://goodstudent.es/goodStudentPHP/CorreosGet.php";
+
+    public String doInBackground(String... arg0) {
+
+
+        try{
+            String passantic = (String)arg0[0];
+            String passnew = (String)arg0[1];
+            String user = (String)arg0[2];
+            User=user;
+            String link = "http://goodstudent.es/goodStudentPHP/cambiaPassword.php?passantic="+passantic+"&&passnew="+passnew+"&&UserId="+user;
+
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -45,11 +60,10 @@ public class CorreosGet extends AsyncTask<String,String,String> {
                     InputStreamReader(response.getEntity().getContent()));
 
             StringBuffer sb = new StringBuffer("");
-            String line = "";
+            String line="";
 
             while ((line = in.readLine()) != null) {
                 sb.append(line);
-
                 break;
             }
 
@@ -58,13 +72,19 @@ public class CorreosGet extends AsyncTask<String,String,String> {
         } catch(Exception e){
             return new String("Exception: " + e.getMessage());
         }
-    }
-    public void onPostExecute(String result){
-        String[] correos= result.split(";");
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, correos);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        correo.setAdapter(adapter);
 
+    }
+
+
+
+    public void onPostExecute(String result){
+
+        Toast.makeText(context,
+                "Contraseña modificada", Toast.LENGTH_SHORT)
+                .show();
+        Intent intent=new Intent(context,Menu.class);
+        intent.putExtra("UserId",User);
+        context.startActivity(intent);
 
     }
 }

@@ -1,4 +1,4 @@
-package com.example.gs;
+package com.example.gs.Controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,9 @@ import android.os.Bundle;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+
+import com.example.gs.R;
+import com.example.gs.Controller.Requests.GetDates;
 
 public class Menu extends AppCompatActivity {
 String Userid;
@@ -41,7 +44,7 @@ String Userid;
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.exitLog:
-                Intent intent1 =new Intent(this,MainActivity.class);
+                Intent intent1 =new Intent(this,Login.class);
                 startActivity(intent1);
                 return true;
             case R.id.CambiarPassword:

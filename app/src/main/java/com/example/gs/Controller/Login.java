@@ -1,4 +1,4 @@
-package com.example.gs;
+package com.example.gs.Controller;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,13 +9,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
-
-import static com.example.gs.Register.md5;
+import com.example.gs.R;
+import com.example.gs.Controller.Requests.SigninGet;
 
 
-public class MainActivity extends AppCompatActivity {
+public class Login extends AppCompatActivity {
     private EditText usernameField,passwordField;
     private TextView status;
 
@@ -33,9 +31,9 @@ public class MainActivity extends AppCompatActivity {
     }
     public void login(View view){
         String username = usernameField.getText().toString();
-        String password = md5(passwordField.getText().toString());
+        String password = Register.md5(passwordField.getText().toString());
 
-        new SigninActivity(this,status).execute(username,password);
+        new SigninGet(this,status).execute(username,password);
 
     }
 

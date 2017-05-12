@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.gs.Contacta"
+    tools:context="com.example.gs.Controller.Contacta"
     android:orientation="vertical"
     android:background="@color/Fondo">
     <LinearLayout
@@ -22,7 +22,7 @@
             android:layout_height="match_parent"
             android:fontFamily="sans-serif-smallcaps"
             android:id="@+id/txtForEmail"
-            
+            android:textColor="@color/caldroid_black"
             android:layout_weight="3">
 
         </TextView>
@@ -43,6 +43,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/txtForSubject"
+            android:textColor="@color/caldroid_black"
             android:fontFamily="sans-serif-smallcaps"
             android:layout_weight="6">
 
@@ -64,6 +65,7 @@
                 android:layout_height="match_parent"
                 android:id="@+id/txtForBody"
                 android:layout_weight="10"
+                android:textColor="@color/caldroid_black"
                 android:fontFamily="sans-serif-smallcaps"
                 android:textAlignment="center"
                 >

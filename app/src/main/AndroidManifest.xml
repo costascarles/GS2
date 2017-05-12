@@ -15,23 +15,23 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".Controller.Login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu" />
-        <activity android:name=".Notas" />
-        <activity android:name=".Register" />
-        <activity android:name=".Contacta" />
-        <activity android:name=".Calendario" />
-        <activity android:name=".NotasDetails" />
-        <activity android:name=".RecuperacionPassword" />
-        <activity android:name=".CambiarPassword" />
-        <activity android:name=".Progres" />
-        <activity android:name=".EventosDetails"></activity>
+        <activity android:name=".Controller.Menu" />
+        <activity android:name=".Controller.Notas" />
+        <activity android:name=".Controller.Register" />
+        <activity android:name=".Controller.Contacta" />
+        <activity android:name=".Controller.Calendario" />
+        <activity android:name=".Controller.NotasDetails" />
+        <activity android:name=".Controller.RecuperacionPassword" />
+        <activity android:name=".Controller.CambiarPassword" />
+        <activity android:name=".Controller.Progres" />
+        <activity android:name=".Controller.EventosDetails"></activity>
     </application>
 
 </manifest>

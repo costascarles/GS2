@@ -1,10 +1,8 @@
-package com.example.gs;
+package com.example.gs.Controller.Requests;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.AsyncTask;
-import android.widget.TextView;
+import android.widget.CalendarView;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -17,38 +15,25 @@ import java.net.URI;
 import java.net.URL;
 
 /**
- * Created by Carles on 12/04/2017.
+ * Created by carles on 13/02/2017.
  */
 
-public class NewPasswordGet extends AsyncTask<String,String,String> {
-    private TextView statusField;
+public class EventsGet extends AsyncTask<String,String,String> {
     private Context context;
+    CalendarView calendar;
 
-    private String email;
 
-    //flag 0 means get and 1 means post.(By default it is get.)
-    public NewPasswordGet(Context context,TextView statusField) {
+    public EventsGet(Context context,CalendarView cal) {
         this.context = context;
-        this.statusField = statusField;
-
+        this.calendar=cal;
 
     }
-
-
-
     protected void onPreExecute(){
     }
-
-
     public String doInBackground(String... arg0) {
+        try {
 
-
-        try{
-            String mail = (String)arg0[0];
-            email=mail;
-
-            String link = "http://goodstudent.es/goodStudentPHP/mail.php?correo="+email;
-
+            String link = "http://goodstudent.es/goodStudentPHP/EventsGet.php";
             URL url = new URL(link);
             HttpClient client = new DefaultHttpClient();
             HttpGet request = new HttpGet();
@@ -58,10 +43,11 @@ public class NewPasswordGet extends AsyncTask<String,String,String> {
                     InputStreamReader(response.getEntity().getContent()));
 
             StringBuffer sb = new StringBuffer("");
-            String line="";
+            String line = "";
 
             while ((line = in.readLine()) != null) {
                 sb.append(line);
+
                 break;
             }
 
@@ -70,20 +56,17 @@ public class NewPasswordGet extends AsyncTask<String,String,String> {
         } catch(Exception e){
             return new String("Exception: " + e.getMessage());
         }
-
     }
-
-
-
     public void onPostExecute(String result){
- String a=result;
-if(result.equals("1")){
-    statusField.setText("Tu correo ha sido enviado comprueba no deseados si no ha llegado.");
-}else {
-    statusField.setText("Dirección de correo erronea:"+result);
-}
+        String[] events= result.split(";");
+        for(int i=0;i<events.length;i++) {
+            String[] event=events[i].split(":");
 
 
+
+
+
+        }
 
     }
 }

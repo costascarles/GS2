@@ -1,15 +1,19 @@
-package com.example.gs;
+package com.example.gs.Controller;
 
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
+import com.example.gs.R;
+import com.example.gs.Controller.Requests.CorreosGet;
 
 public class Contacta extends AppCompatActivity {
     Spinner etEmail;EditText etSubject;EditText etBody;CheckBox chkAttachment;
@@ -17,6 +21,9 @@ public class Contacta extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contacta);
+        if(getSupportActionBar() != null) {
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
          etEmail = (Spinner) findViewById(R.id.email);
          etSubject = (EditText) findViewById(R.id.etSubject);
          etBody = (EditText) findViewById(R.id.etBody);
@@ -48,6 +55,21 @@ public class Contacta extends AppCompatActivity {
             Log.i("sending email...", "");
         } catch (android.content.ActivityNotFoundException ex) {
             Toast.makeText(Contacta.this, "There is no email client installed.", Toast.LENGTH_SHORT).show();
+        }
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                finish();
+                //NavUtils.navigateUpFromSameTask(this);
+                return true;
+
+            default:
+                // If we got here, the user's action was not recognized.
+                // Invoke the superclass to handle it.
+                return super.onOptionsItemSelected(item);
+
         }
     }
 }
