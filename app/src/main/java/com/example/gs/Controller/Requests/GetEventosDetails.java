@@ -72,7 +72,7 @@ String userid;
         data=new ArrayList<ItemModelCalendario>();
 
         String[] todas= result.split(";");
-if(result!="") {
+if(!result.equals("")) {
     for (int i = 0; i < todas.length; i++) {
         String[] events = todas[i].split("/");
         ItemModelCalendario model = new ItemModelCalendario(events[2], events[1], events[0]);

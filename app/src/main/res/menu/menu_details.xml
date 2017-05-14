@@ -7,7 +7,5 @@
     <item android:id="@+id/CambiarPassword"
         android:title="@string/Menu_contra"
         app:showAsAction="never"/>
-    <item android:id="@+id/Ajustes"
-        android:title="@string/Menu_editarperfil"
-        app:showAsAction="never"/>
+
 </menu>

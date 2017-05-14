@@ -6,7 +6,7 @@ package com.example.gs.Model;
 
 public class ItemModel {
     private String title,nota,id;
-    private int image;
+    //private int image;
 
   public ItemModel(String title, String nota,String id)  {
       this.title=title;

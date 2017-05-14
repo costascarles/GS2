@@ -29,6 +29,7 @@ public class Login extends AppCompatActivity {
         status = (TextView)findViewById(R.id.textView4);
 
     }
+    //Login
     public void login(View view){
         String username = usernameField.getText().toString();
         String password = Register.md5(passwordField.getText().toString());
@@ -36,7 +37,7 @@ public class Login extends AppCompatActivity {
         new SigninGet(this,status).execute(username,password);
 
     }
-
+//Registro
     public void loginPost(View view){
         Intent intent =new Intent(this,Register.class);
         startActivity(intent);

@@ -53,9 +53,7 @@ String Userid;
                 startActivity(intent);
 
                 return true;
-            case R.id.Ajustes:
 
-                return true;
 
 
 
